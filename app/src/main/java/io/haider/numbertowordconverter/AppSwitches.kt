@@ -11,81 +11,60 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import io.haider.numbertowordconverter.dinarCurrencyState
-import io.haider.numbertowordconverter.dinarLastWord
-import io.haider.numbertowordconverter.dollarCurrency
-import io.haider.numbertowordconverter.dollarCurrencyState
-import io.haider.numbertowordconverter.dollarLastWord
-import io.haider.numbertowordconverter.iraqCurrency
-import io.haider.numbertowordconverter.isNameSwitched
-import io.haider.numbertowordconverter.onlyWordSwitch
 
-public class AppSwitches {
-    @Composable
-    fun Switches() {
-        Column (
+@Composable
+fun Switches(
+) {
+    val viewModel = AppViewModel()
+    Column(
+        modifier = Modifier
+            .padding(start = 8.dp, end = 8.dp)
+            .fillMaxWidth(),
+    ) {
+
+        Row(
             modifier = Modifier
                 .padding(start = 8.dp, end = 8.dp)
                 .fillMaxWidth(),
-        ){
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(text = "add Currency name in the end")
+            Checkbox(checked = viewModel.isNameSwitched, onCheckedChange = {
+                viewModel.isNameSwitched = it
+                if (viewModel.isNameSwitched) {
+                    viewModel.dollarCurrencyState = viewModel.dollarCurrency
+                    viewModel.dinarCurrencyState = viewModel.iraqCurrency
+                } else {
+                    viewModel.dinarCurrencyState = ""
+                    viewModel.dollarCurrencyState = ""
+                }
 
-            Row(
-                modifier = Modifier
-                    .padding(start = 8.dp, end = 8.dp)
-                    .fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(text = "add Currency name in the end")
-                Checkbox(checked = isNameSwitched , onCheckedChange = {
-                    isNameSwitched = it
-                    if (isNameSwitched) {
-                        dollarCurrencyState = dollarCurrency
-                        dinarCurrencyState = iraqCurrency
+            })
+        }
+        Row(
+            modifier = Modifier
+                .padding(start = 8.dp, end = 8.dp)
+                .fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+
+        ) {
+
+            Text(text = "add only word in the end")
+            Checkbox(
+                checked = viewModel.onlyWordSwitch,
+                onCheckedChange = {
+                    viewModel.onlyWordSwitch = it
+                    if (viewModel.onlyWordSwitch) {
+                        viewModel.dollarLastWord = "only"
+                        viewModel.dinarLastWord = "ققط لا غير"
                     } else {
-                        dinarCurrencyState = ""
-                        dollarCurrencyState = ""
+                        viewModel.dollarLastWord = ""
+                        viewModel.dinarLastWord = ""
                     }
-
-                })
-//            Switch(
-//                checked = isNameSwitched,
-//                onCheckedChange = {
-//                    isNameSwitched = it
-//                    if (isNameSwitched) {
-//                        dollarCurrencyState = dollarCurrency
-//                        dinarCurrencyState = iraqCurrency
-//                    } else {
-//                        dinarCurrencyState = ""
-//                        dollarCurrencyState = ""
-//                    }
-//                },
-//            )
-            }
-            Row(
-                modifier = Modifier
-                    .padding(start = 8.dp, end = 8.dp)
-                    .fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-
-            ) {
-
-                Text(text = "add only word in the end")
-                Checkbox(
-                    checked = onlyWordSwitch,
-                    onCheckedChange = {
-                        onlyWordSwitch = it
-                        if (onlyWordSwitch) {
-                            dollarLastWord = "only"
-                            dinarLastWord = "ققط لا غير"
-                        } else {
-                            dollarLastWord = ""
-                            dinarLastWord = ""
-                        }
-                    },
-                )
-            }
+                },
+            )
         }
     }
 }

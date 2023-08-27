@@ -36,91 +36,26 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    NumberToWord()
+                    App()
                 }
             }
         }
     }
 }
 
-var number by mutableStateOf("")
-var arabicWord by mutableStateOf("")
-var englishWord by mutableStateOf("")
-var dollarCurrencyState by mutableStateOf("")
-var dinarCurrencyState by mutableStateOf("")
-var dollarLastWord by mutableStateOf("")
-var dinarLastWord by mutableStateOf("")
-var isNameSwitched by mutableStateOf(false)
-var onlyWordSwitch by mutableStateOf(false)
-val dollarCurrency: String = Currency.getInstance("USD").getDisplayName(Locale.UK)
-val iraqCurrency: String = Currency.getInstance("IQD").getDisplayName(Locale("ar", "IQ"))
-
-@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
-@RequiresApi(Build.VERSION_CODES.TIRAMISU)
-@Composable
-fun NumberToWord() {
-    Scaffold(
-        modifier = Modifier.fillMaxWidth(),
-    ) {
+//var number by mutableStateOf("")
+//var arabicWord by mutableStateOf("")
+//var englishWord by mutableStateOf("")
+//var dollarCurrencyState by mutableStateOf("")
+//var dinarCurrencyState by mutableStateOf("")
+//var dollarLastWord by mutableStateOf("")
+//var dinarLastWord by mutableStateOf("")
+//var isNameSwitched by mutableStateOf(false)
+//var onlyWordSwitch by mutableStateOf(false)
+//val dollarCurrency: String = Currency.getInstance("USD").getDisplayName(Locale.UK)
+//val iraqCurrency: String = Currency.getInstance("IQD").getDisplayName(Locale("ar", "IQ"))
 
 
-        Column(
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Text(
-                text = "change Number to words",
-                style = MaterialTheme.typography.bodyLarge,
-                modifier = Modifier.padding(top = 16.dp, bottom = 16.dp)
-            )
-            Row(
-                Modifier.padding(start = 10.dp, end = 10.dp),
-                horizontalArrangement = Arrangement.Center,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                OutlinedTextField(
-                    modifier = Modifier.padding(end = 8.dp),
-                    value = number,
-                    onValueChange = { number = it },
-                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                    singleLine = true,
-                )
-                Box(
-                    modifier = Modifier.padding(start = 8.dp),
-                ) {
-                    IconButton(
-                        onClick = {
-                            number = ""
-                            arabicWord = ""
-                            englishWord = ""
-                            dollarCurrencyState = ""
-                            dinarCurrencyState = ""
-                            dollarLastWord = ""
-                            dinarLastWord = ""
-                            isNameSwitched = false
-                            onlyWordSwitch = false
-                        },
-
-                        ) {
-
-                        Icon(imageVector = Icons.Default.Delete, contentDescription = "Clear")
-
-                    }
-                }
-            }
-            if (number.isNotEmpty()) {
-                arabicWord = NumberConverter(number).numToWordArabic()
-                englishWord = NumberConverter(number).numToWordEnglish()
-            }
-            Spacer(modifier = Modifier.padding(16.dp))
-            AppSwitches().Switches()
-            Spacer(modifier = Modifier.padding(16.dp))
-            WordsCard(wordString = "$arabicWord $dinarCurrencyState $dinarLastWord")
-            WordsCard(wordString = "$englishWord $dollarCurrencyState $dollarLastWord")
-
-        }
-    }
-}
 
 
 
@@ -147,7 +82,7 @@ fun NumberToWord() {
 @Composable
 fun DefaultPreview() {
     NumberToWordConverterTheme {
-        NumberToWord()
+        App()
         // AppSwitches()
     }
 }

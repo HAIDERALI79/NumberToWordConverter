@@ -1,7 +1,4 @@
 package io.haider.numbertowordconverter
-
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -40,18 +37,26 @@ fun WordsCard(
     ) {
         Column(
             modifier = modifier
-                .fillMaxWidth(),
+                .fillMaxWidth()
+                .padding(horizontal = 10.dp, vertical = 10.dp),
             verticalArrangement = Arrangement.Bottom
         ) {
-            Text(
-                text = wordString,
-                style = MaterialTheme.typography.bodyMedium
-            )
-            Spacer(modifier = modifier.padding(bottom = 10.dp))
+            Row(
+                modifier = modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 10.dp, vertical = 10.dp),
+                horizontalArrangement = Arrangement.End
+            ) {
+                Text(
+                    text = wordString,
+                    style = MaterialTheme.typography.bodyLarge
+                )
+            }
+       //     Spacer(modifier = modifier.padding(bottom = 10.dp))
 
             Box(
-                modifier = modifier.fillMaxWidth(),
-                contentAlignment = Alignment.BottomEnd
+                 modifier = modifier.align(alignment = Alignment.End),
+             //   contentAlignment = Alignment.BottomEnd
             ) {
                 IconButton(
                     modifier = modifier.clip(CircleShape),

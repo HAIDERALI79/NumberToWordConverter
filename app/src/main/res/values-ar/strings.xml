@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">"تفقيط الارقام "</string>
+
+<!--app Switches-->
+    <string name="add_Currency">اضف اسم العملة في الاخير</string>
+    <string name="add_only_word">اضف كلمة فقط لا غير</string>
+    <string name="only_word">فقط لا غير</string>
+    <string name="wrong_number">الرقم الذي ادخلته خاطئ</string>
+</resources>

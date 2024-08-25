@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Number to Word Converter</string>
+    <string name="empty_string" translatable="false" />
+    <!--app Switches-->
+    <string name="add_Currency"> add Currency name in the end</string>
+    <string name="add_only_word">add only word</string>
+    <string name="only_word">only</string>
+    <string name="wrong_number">enter an integer value</string>
 </resources>

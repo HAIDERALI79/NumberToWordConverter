@@ -1,9 +1,21 @@
 <resources>
     <string name="app_name">"تفقيط الارقام "</string>
 
-<!--app Switches-->
+    <!--app Switches-->
     <string name="add_Currency">اضف اسم العملة في الاخير</string>
     <string name="add_only_word">اضف كلمة فقط لا غير</string>
     <string name="only_word">فقط لا غير</string>
     <string name="wrong_number">الرقم الذي ادخلته خاطئ</string>
+    <string name="settings_tab">الإعدادات</string>
+    <string name="system_default">الوضع الافتراضي</string>
+    <string name="light">الوضع النهاري</string>
+    <string name="dark">الوضع الليلي</string>
+    <string name="cancel">الغاء</string>
+    <string name="ok">موافق</string>
+    <string name="color_scheme">المظهر</string>
+    <string name="choose_theme">اختر المظهر</string>
+    <string name="about">معلومات</string>
+    <string name="feedback">راسلنا</string>
+    <string name="version">الاصدار</string>
+    <string name="change_appearance">تغيير مظهر البرنامج </string>
 </resources>

@@ -1,5 +1,5 @@
 package io.haider.numbertowordconverter.cards
-import android.content.Context
+
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -7,7 +7,9 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -30,17 +32,24 @@ fun WordsCard(
     modifier: Modifier = Modifier,
     wordString: String,
 ) {
+    val colorScheme = MaterialTheme.colorScheme
     val clipboardManager: ClipboardManager = LocalClipboardManager.current
-    val context= LocalContext.current
+    val context = LocalContext.current
     //  val wordString = "$arabicWord $dinarCurrencyState $dinarLastWord"
 
     Card(
-        modifier = modifier.padding(horizontal = 16.dp, vertical = 16.dp),
+        modifier = modifier.padding(horizontal = 16.dp),
+        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+        shape = RoundedCornerShape(16.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceVariant,
+            contentColor = MaterialTheme.colorScheme.onSurfaceVariant
+        )
     ) {
         Column(
             modifier = modifier
                 .fillMaxWidth()
-                .padding(horizontal = 10.dp, vertical = 10.dp),
+                .padding(10.dp),
             verticalArrangement = Arrangement.Bottom
         ) {
             Row(
@@ -111,11 +120,12 @@ fun WordsCard(
         }
     }
 }
-    @Preview(showBackground = true)
-    @Composable
-    fun CardPreview() {
-        WordsCard(wordString = "this is test")
-    }
+
+@Preview(showBackground = true)
+@Composable
+fun CardPreview() {
+    WordsCard(wordString = "this is test")
+}
 
 
 

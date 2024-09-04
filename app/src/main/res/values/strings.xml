@@ -6,4 +6,16 @@
     <string name="add_only_word">add only word</string>
     <string name="only_word">only</string>
     <string name="wrong_number">enter an integer value</string>
+    <string name="settings_tab">Settings</string>
+    <string name="color_scheme">Color scheme</string>
+    <string name="choose_theme">Choose Theme</string>
+    <string name="system_default">System Default</string>
+    <string name="light">Light</string>
+    <string name="dark">Dark</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
+    <string name="about">About</string>
+    <string name="feedback">Feedback</string>
+    <string name="version">Version</string>
+    <string name="change_appearance">change the Appearance</string>
 </resources>

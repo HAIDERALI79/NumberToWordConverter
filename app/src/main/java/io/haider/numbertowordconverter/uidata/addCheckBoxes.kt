@@ -15,6 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import io.haider.numbertowordconverter.R
 import io.haider.numbertowordconverter.appdata.CurrencyData
+import io.haider.numbertowordconverter.ui.theme.RuqaaFontFamily
 
 @Composable
 fun AddCheckBoxes(
@@ -61,8 +62,9 @@ fun AddCurrencyName(
             onCheckedChange = onChecked
         )
         Text(
-            modifier = modifier.padding(16.dp),
-            text = stringResource(id = labelName)
+            modifier = modifier.padding(8.dp),
+            text = stringResource(id = labelName),
+
         )
     }
 }
@@ -83,8 +85,8 @@ fun AddOnlyWord(
             onCheckedChange = onChecked
         )
         Text(
-            modifier = modifier.padding(16.dp),
-            text = stringResource(id = labelName)
+            modifier = modifier.padding(8.dp),
+            text = stringResource(id = labelName),
 
         )
 

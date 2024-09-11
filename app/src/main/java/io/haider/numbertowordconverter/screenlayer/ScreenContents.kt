@@ -1,11 +1,9 @@
 package io.haider.numbertowordconverter.screenlayer
 
-import android.content.res.Configuration
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
@@ -14,12 +12,10 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import io.haider.numbertowordconverter.CurrencyViewModel
 import io.haider.numbertowordconverter.cards.WordsCard
-import io.haider.numbertowordconverter.ui.theme.NumberToWordConverterTheme
 
 
 @Composable
@@ -37,10 +33,10 @@ fun ScreenContents(
                 .verticalScroll(rememberScrollState())
                 .padding(paddingValues = paddingValues)
                 .fillMaxSize(),
-            verticalArrangement = Arrangement.spacedBy(10.dp)
+            verticalArrangement = Arrangement.spacedBy(16.dp)
 
         ) {
-            //  Spacer(modifier = Modifier.padding(16.dp))
+            Spacer(modifier = Modifier.padding(16.dp))
             SearchScreen(
                 value = currencyViewModel.inputText.collectAsState().value,
                 onValueChange = { value -> currencyViewModel.onTextFieldChanged(value) },
@@ -59,14 +55,15 @@ fun ScreenContents(
     }
 }
 
-@RequiresApi(Build.VERSION_CODES.TIRAMISU)
-@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
-@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO)
-@Composable
-fun DefaultPreview() {
-    NumberToWordConverterTheme {
-        ScreenContents(paddingValues = PaddingValues(8.dp))
-        //  ScreenApp()
-        // AppSwitches()
-    }
-}
+//@RequiresApi(Build.VERSION_CODES.TIRAMISU)
+//@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
+//@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO)
+//@Composable
+//fun DefaultPreview() {
+//    NumberToWordConverterTheme {
+//        ScreenContents(
+//            modifier = Modifier,
+//            paddingValues = PaddingValues(8.dp),
+//        )
+//    }
+//}

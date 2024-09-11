@@ -18,19 +18,20 @@ import androidx.compose.ui.focus.FocusManager
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import io.haider.numbertowordconverter.R
+import io.haider.numbertowordconverter.ui.theme.NumberToWordConverterTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ScreenApp(
     modifier: Modifier = Modifier,
-
-    navController: NavHostController
-
+    navController: NavHostController,
 ) {
 
     val focusRequester: FocusRequester = remember {
@@ -51,15 +52,15 @@ fun ScreenApp(
                     }
                 )
             },
-        containerColor = colorScheme.errorContainer,
-        contentColor = colorScheme.onSecondary,
+        containerColor = colorScheme.background,
+        contentColor = colorScheme.onBackground,
 
 
         topBar = {
             CenterAlignedTopAppBar(
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = colorScheme.background,
-                    titleContentColor = colorScheme.onBackground,
+                    containerColor = colorScheme.surface,
+                    titleContentColor = colorScheme.onSurface,
                 ),
                 title = {
                     Text(
@@ -74,7 +75,9 @@ fun ScreenApp(
 
                 actions = {
                     IconButton(
-                        onClick = { navController.navigate(route = "settings") },
+                        onClick = {
+                            navController.navigate(route = "settings")
+                        },
                     ) {
                         Icon(
                             imageVector = Icons.Filled.Settings,
@@ -88,7 +91,33 @@ fun ScreenApp(
                 )
         },
     ) { paddingValue ->
-        ScreenContents(paddingValues = paddingValue, modifier = modifier)
+
+        ScreenContents(
+            paddingValues = paddingValue, modifier = modifier
+        )
     }
 }
 
+@Preview
+@Composable
+fun ScreenAppPreview() {
+    NumberToWordConverterTheme {
+        ScreenApp(
+            modifier = Modifier,
+            navController = NavHostController(context = LocalContext.current),
+
+            )
+    }
+}
+
+//@Preview
+//@Composable
+//fun DefaultPreview() {
+//    NumberToWordConverterTheme {
+//        ScreenApp(
+//            modifier = Modifier,
+//            navController = rememberNavController()
+//
+//        )
+//    }
+//}

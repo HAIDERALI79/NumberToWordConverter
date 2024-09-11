@@ -1,5 +1,6 @@
 package io.haider.numbertowordconverter.uidata
 
+import android.content.res.Configuration
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -7,6 +8,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Checkbox
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -64,6 +66,7 @@ fun AddCurrencyName(
         Text(
             modifier = modifier.padding(8.dp),
             text = stringResource(id = labelName),
+            style = MaterialTheme.typography.labelMedium
 
         )
     }
@@ -87,21 +90,14 @@ fun AddOnlyWord(
         Text(
             modifier = modifier.padding(8.dp),
             text = stringResource(id = labelName),
+            style = MaterialTheme.typography.labelMedium
 
         )
 
     }
 }
 
-@Preview
-@Composable
-fun AddOnlyWordPreview() {
-    AddOnlyWord(checked = false,
-        onChecked = {},
-        labelName = R.string.app_name)
-}
-
-@Preview
+@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO)
 @Composable
 fun AddCheckBoxesPreview() {
     AddCheckBoxes(currencyData = CurrencyData(), stringsInfo = StringsInfo(
@@ -110,4 +106,12 @@ fun AddCheckBoxesPreview() {
     ), onWordCheckedState = {}) {
 
     }
+}
+@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO)
+
+@Composable
+fun AddOnlyWordPreview() {
+    AddOnlyWord(checked = false,
+        onChecked = {},
+        labelName = R.string.add_only_word)
 }

@@ -1,5 +1,6 @@
 package io.haider.numbertowordconverter.settings
 
+import android.content.Context
 import android.content.Intent
 import android.content.Intent.ACTION_SEND
 import android.net.Uri
@@ -31,4 +32,13 @@ fun appShare(): Intent {
     }
     val shareSheet: Intent = Intent.createChooser(sendIntent, null)
     return shareSheet
+}
+
+fun openAppProfile(appUrl: String, context: Context) {
+    // Replace with your Twitter profile URL
+    val twitterUrl = appUrl
+
+    // Intent to open the Twitter app or a browser
+    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(twitterUrl))
+    context.startActivity(intent)
 }

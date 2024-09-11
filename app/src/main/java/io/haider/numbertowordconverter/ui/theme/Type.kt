@@ -41,7 +41,7 @@ val Typography = Typography(
     titleMedium = TextStyle(
         fontFamily = RuqaaFontFamily,
         fontWeight = FontWeight.Bold,
-        fontSize = 18.sp
+        fontSize = 30.sp
     ),
     titleLarge = TextStyle(
         fontFamily = RuqaaFontFamily,

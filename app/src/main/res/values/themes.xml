@@ -3,5 +3,20 @@
 
     <style name="Theme.NumberToWordConverter" parent="android:Theme.Material.Light.NoActionBar">
         <item name="android:statusBarColor">@color/purple_700</item>
+        <!--        <item name="android:windowBackground">@color/background_light</item>-->
     </style>
+
+    <style name="Theme.NumberToWordConverter.Splash" parent="Theme.SplashScreen">
+        <!-- Background color for the splash screen -->
+        <item name="windowSplashScreenBackground">@color/background_color</item>
+        <!-- App icon for the splash screen -->
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
+        <!-- Duration of the splash screen icon animation -->
+        <item name="windowSplashScreenAnimationDuration">200</item>
+        <!-- Control the color of the status bar during the splash screen -->
+        <item name="postSplashScreenTheme">@style/Theme.NumberToWordConverter</item>
+    </style>
+    <!--    <style name="Theme.NumberToWordConverter.Splash" parent="Theme.NumberToWordConverter">-->
+    <!--        <item name="android:windowBackground">@drawable/splash_background</item>-->
+    <!--    </style>-->
 </resources>

@@ -11,11 +11,11 @@ import kotlinx.coroutines.flow.StateFlow
 
 
 class CurrencyViewModel(
-    private val savedStateHandle: SavedStateHandle
+    private val savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
     companion object {
         private const val CURRENCY_STATE_KEY = "currency_state"
-        private const val INPUT_TEXT_KEY = "input_text"
+        //      private const val INPUT_TEXT_KEY = "input_text"
     }
 
     private val _inputText = MutableStateFlow("")

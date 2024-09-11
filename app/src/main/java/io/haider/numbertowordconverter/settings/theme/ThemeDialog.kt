@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
@@ -13,10 +14,6 @@ import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -33,10 +30,9 @@ fun ThemeDialog(
     onDismissRequest: () -> Unit,
     onConfirmation: () -> Unit,
     onThemeChange: (AppTheme) -> Unit,
-    defaultTheme: AppTheme
-
+    themeMode: AppTheme,
 ) {
-    var selectedTheme by remember { mutableStateOf(defaultTheme) }
+    //   var selectedTheme by remember { mutableStateOf(defaultTheme) }
     val typography = MaterialTheme.typography
     Dialog(onDismissRequest = onDismissRequest) {
         Card(
@@ -56,6 +52,7 @@ fun ThemeDialog(
 
                 )
             }
+
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -63,23 +60,16 @@ fun ThemeDialog(
                 //   verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.Start,
             ) {
+                AppTheme.values().forEach { theme ->
+                    LabeledRadioButton(
+                        selected = theme == themeMode,
+                        onSelect = { onThemeChange(theme) },
+                        theme = theme
 
-                LabeledRadioButton(
-                    selected = selectedTheme == AppTheme.MODE_AUTO,
-                    onSelect = { selectedTheme = AppTheme.MODE_AUTO },
-                    label = stringResource(id = R.string.system_default)
-                )
-                LabeledRadioButton(
-                    selected = selectedTheme == AppTheme.MODE_DAY,
-                    onSelect = { selectedTheme = AppTheme.MODE_DAY },
-                    label = stringResource(id = R.string.light)
-                )
-                LabeledRadioButton(
-                    selected = selectedTheme == AppTheme.MODE_NIGHT,
-                    onSelect = { selectedTheme = AppTheme.MODE_NIGHT },
-                    label = stringResource(id = R.string.dark)
-                )
+                        //     onSelect = { themeTypeViewModel.selectTheme(AppTheme.MODE_AUTO) },
+                    )
 
+                }
                 Row(
                     modifier = Modifier
                         .padding(
@@ -99,7 +89,7 @@ fun ThemeDialog(
                     }
                     TextButton(
                         onClick = {
-                            onThemeChange(selectedTheme)
+                            onThemeChange(themeMode)
                             onConfirmation()
                         },
                         //   modifier = Modifier.padding(8.dp),
@@ -119,20 +109,30 @@ fun ThemeDialog(
 fun LabeledRadioButton(
     selected: Boolean,
     onSelect: () -> Unit,
-    label: String
+    //  label: String,
+    theme: AppTheme
 ) {
     Row(
+        modifier = Modifier
+            .selectable(
+                selected = selected,
+                onClick = onSelect
+            )
+            .fillMaxWidth()
+            .padding(horizontal = 8.dp, vertical = 10.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-
-
         RadioButton(
             selected = selected,
-            onClick = onSelect,
+            onClick = null,
         )
         Text(
-            text = label,
+            text = when (theme) {
+                AppTheme.MODE_AUTO -> stringResource(id = R.string.system_default)
+                AppTheme.MODE_NIGHT -> stringResource(id = R.string.dark)
+                AppTheme.MODE_DAY -> stringResource(id = R.string.light)
+            },
             style = MaterialTheme.typography.labelMedium
 
         )
@@ -146,6 +146,6 @@ fun ThemeDialogPreview() {
         onDismissRequest = { /*TODO*/ },
         onConfirmation = { /*TODO*/ },
         onThemeChange = {},
-        defaultTheme = AppTheme.MODE_AUTO
+        themeMode = AppTheme.MODE_AUTO
     )
 }

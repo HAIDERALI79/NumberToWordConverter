@@ -21,7 +21,7 @@ fun sendToEmail(email: String) = Intent(
 fun appShare(): Intent {
     val sendIntent: Intent = Intent().apply {
         action = ACTION_SEND
-        putExtra(Intent.EXTRA_TEXT, "https://developer.android.com/training/sharing/")
+        putExtra(Intent.EXTRA_TEXT, "https://github.com/HAIDERALI79/NumberToWordConverter/releases")
         putExtra(Intent.EXTRA_TITLE, "Introducing content previews")
         type = "text/pain"
         //  data = Uri.parse("https://developer.android.com/training/sharing/")
